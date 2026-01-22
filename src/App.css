@@ -124,9 +124,9 @@ body {
 
 .hero-image-center {
   flex-shrink: 0;
-  width: auto;
-  height: 320px;
-  aspect-ratio: 9 / 16;
+  width: 122px;
+  height: 235px;
+  transform: translateX(-5%) translateY(45%);
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
@@ -230,6 +230,7 @@ body {
   border-radius: 20px;
   width: 231px;
   height: 163px;
+  transform: translateX(0%) translateY(110%);
 }
 
 .col-2 {
@@ -238,6 +239,7 @@ body {
   border-radius: 20px;
   width: 122px;
   height: 98px;
+  transform: translateX(-200%) translateY(70%);
 }
 
 .col-3 {
@@ -246,6 +248,7 @@ body {
   border-radius: 20px;
   width: 286px;
   height: 196px;
+  transform: translateX(-93%) translateY(-17%);
 }
 
 .col-4 {
@@ -254,6 +257,8 @@ body {
   border-radius: 20px;
   width: 122px;
   height: 163px;
+  transform: translateX(200%) translateY(-60%);
+  
 }
 
 .col-5 {
@@ -262,7 +267,8 @@ body {
   border-radius: 20px;
   width: 199px;
   height: 261px;
-  transform: translateX(-230%);
+  transform: translateX(-230%) translateY(-85%);
+  
 }
 
 .col-6 {
@@ -271,6 +277,8 @@ body {
   border-radius: 20px;
   width: 122px;
   height: 98px;
+  transform: translateX(-70%) translateY(-192%);
+  
 }
 
 .col-7 {
@@ -279,6 +287,8 @@ body {
   border-radius: 20px;
   width: 122px;
   height: 98px;
+  transform: translateX(155%) translateY(-125%);
+  
 }
 
 /* Right: COMPUTER ENGINEER */
