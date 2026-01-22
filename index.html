@@ -1,116 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rayann Sagnon • Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="styles.css" />
+    <title>portfolio_website</title>
   </head>
   <body>
-    <header class="topbar fade-in container-fluid d-flex align-items-center justify-content-between">
-      <div class="brand">Rayann <span>Sagnon</span></div>
-      <nav class="nav-pill d-flex align-items-center justify-content-center">
-        <a href="projects.html">Projects</a>
-        <a href="resume.html">Resume</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </header>
-
-    <main class="hero container-fluid">
-      <div class="row">
-        <div class="col-12">
-          <div class="headline fade-in">
-            <span class="headline-word">Hi</span>
-            <span class="headline-word">There</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="row align-items-end gy-4">
-        <div class="col-12 col-lg-3 order-2 order-lg-1">
-          <section class="intro fade-in">
-            <div class="intro-label">I AM</div>
-            <h1 class="intro-name">RAYANN</h1>
-            <p class="intro-bio">
-              I am a Computer Engineering student passionate about building
-              impactful digital solutions, blending software, AI, and design.
-            </p>
-          </section>
-        </div>
-
-        <div class="col-12 col-lg-6 order-1 order-lg-2">
-          <section class="image-collage fade-in">
-            <div class="card card-large card-diplome" style="--radius: 30px">
-              <img src="images/diplome.jpg" alt="Portrait in black and white" />
-            </div>
-            <div class="card card-tall card-eloquence" style="--radius: 22px">
-              <img src="images/eloquence.jpg" alt="Documentary moment" />
-            </div>
-            <div class="card card-small card-montreal" style="--radius: 18px">
-              <img src="images/montreal.jpg" alt="City architecture" />
-            </div>
-            <div class="card card-wide card-falls" style="--radius: 28px">
-              <img src="images/falls.png" alt="Color portrait" />
-            </div>
-            <div class="card card-mini card-mini-1 card-kart" style="--radius: 16px">
-              <img src="images/kart.JPEG" alt="Racing day" />
-            </div>
-            <div class="card card-medium card-medium-1 card-brevet" style="--radius: 24px">
-              <img src="images/brevet.jpg" alt="Award celebration" />
-            </div>
-            <div
-              class="card card-medium card-medium-2 card-parents"
-              style="--radius: 24px"
-            >
-              <img src="images/parents.JPG" alt="Team achievement" />
-            </div>
-            <div class="card card-mini card-mini-2 card-team" style="--radius: 18px">
-              <img src="images/team.jpg" alt="Group photo" />
-            </div>
-          </section>
-        </div>
-
-        <div class="col-12 col-lg-3 order-3 d-flex flex-column justify-content-end gap-4">
-          <section class="role fade-in">
-            <p>
-              Specialized in Front-End Development, UI/UX Design, and Web
-              Applications.
-            </p>
-          </section>
-
-          <section class="title-block fade-in">
-            <h2>
-              COMPUTER
-              <br />
-              ENGINEER
-            </h2>
-          </section>
-        </div>
-      </div>
-    </main>
-
-    <footer class="skills fade-in container-fluid">
-      PROBLEM SOLVING • TEAMWORK • COMMUNICATION • LEADERSHIP • INITIATIVE •
-      CURIOSITY
-    </footer>
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-      crossorigin="anonymous"
-    ></script>
-    <script src="script.js"></script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
