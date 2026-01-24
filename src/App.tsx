@@ -30,9 +30,6 @@ function App() {
       <section className="hero">
         <div className="hero-top">
           <h1 className="hero-hi">Hi</h1>
-          <div className="hero-image-center">
-            <img src={eloquence} alt="Portrait" />
-          </div>
           <h1 className="hero-there">There</h1>
         </div>
 
@@ -48,6 +45,7 @@ function App() {
           {/* Collage Grid */}
           <div className="collage-wrapper">
             <div className="collage-grid">
+              <img src={eloquence} alt="Portrait" className="col-item col-0" />
               <img src={parents} alt="img1" className="col-item col-1" />
               <img src={montreal} alt="img2" className="col-item col-2" />
               <img src={falls} alt="img3" className="col-item col-3" />
