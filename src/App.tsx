@@ -1,4 +1,5 @@
 import './App.css'
+import { useRef } from 'react'
 import eloquence from './assets/eloquence.jpg'
 import parents from './assets/parents.JPG'
 import montreal from './assets/montreal.jpg'
@@ -9,6 +10,61 @@ import kart from './assets/kart.JPEG'
 import brevet from './assets/brevet.jpg'
 
 function App() {
+  const introAmRef = useRef<HTMLHeadingElement>(null)
+  const introRayannRef = useRef<HTMLHeadingElement>(null)
+  const heroHiRef = useRef<HTMLHeadingElement>(null)
+  const heroThereRef = useRef<HTMLHeadingElement>(null)
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const updateGradient = (element: HTMLElement | null) => {
+      if (!element) return
+      const rect = element.getBoundingClientRect()
+      const x = e.clientX - rect.left
+      const y = e.clientY - rect.top
+      element.style.setProperty('--mouse-x', `${x}px`)
+      element.style.setProperty('--mouse-y', `${y}px`)
+    }
+
+    updateGradient(introAmRef.current)
+    updateGradient(introRayannRef.current)
+  }
+
+  const handleHiThereMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const updateGradient = (element: HTMLElement | null) => {
+      if (!element) return
+      const rect = element.getBoundingClientRect()
+      const x = e.clientX - rect.left
+      const y = e.clientY - rect.top
+      element.style.setProperty('--mouse-x', `${x}px`)
+      element.style.setProperty('--mouse-y', `${y}px`)
+    }
+
+    updateGradient(heroHiRef.current)
+    updateGradient(heroThereRef.current)
+  }
+
+  const handleMouseLeave = () => {
+    if (introAmRef.current) {
+      introAmRef.current.style.setProperty('--mouse-x', '-9999px')
+      introAmRef.current.style.setProperty('--mouse-y', '-9999px')
+    }
+    if (introRayannRef.current) {
+      introRayannRef.current.style.setProperty('--mouse-x', '-9999px')
+      introRayannRef.current.style.setProperty('--mouse-y', '-9999px')
+    }
+  }
+
+  const handleHiThereMouseLeave = () => {
+    if (heroHiRef.current) {
+      heroHiRef.current.style.setProperty('--mouse-x', '-9999px')
+      heroHiRef.current.style.setProperty('--mouse-y', '-9999px')
+    }
+    if (heroThereRef.current) {
+      heroThereRef.current.style.setProperty('--mouse-x', '-9999px')
+      heroThereRef.current.style.setProperty('--mouse-y', '-9999px')
+    }
+  }
+
   return (
     <div className="portfolio">
       {/* Topbar */}
@@ -29,11 +85,13 @@ function App() {
       {/* Hero Section - All Images and Text */}
       <section className="hero">
         <div className="hero-middle">
-          <h1 className="hero-hi">Hi</h1>
-          <h1 className="hero-there">There</h1>
-          <div className="hero-left">
-            <h2 className="intro-am">I AM</h2>
-            <h2 className="intro-rayann">RAYANN</h2>
+          <div className="hi-there-wrapper" onMouseMove={handleHiThereMouseMove} onMouseLeave={handleHiThereMouseLeave}>
+            <h1 className="hero-hi interactive-text" ref={heroHiRef}>Hi</h1>
+            <h1 className="hero-there interactive-text" ref={heroThereRef}>There</h1>
+          </div>
+          <div className="hero-left" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
+            <h2 className="intro-am interactive-text" ref={introAmRef}>I AM</h2>
+            <h2 className="intro-rayann interactive-text" ref={introRayannRef}>RAYANN</h2>
             <p className="intro-description">
               I am a Computer Engineering student passionate about building impactful digital solutions, blending software, AI, and design.
             </p>

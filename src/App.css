@@ -140,19 +140,43 @@ body {
   transform: translateY(-600%);
 }
 
+.hi-there-wrapper {
+  position: absolute;
+  top: -170px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 24%;
+  cursor: pointer;
+}
+
 .hero-hi {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 128px;
   font-weight: 400;
   line-height: 1;
   letter-spacing: 0;
-  color: #000000;
   margin: 0;
   flex-shrink: 0;
   white-space: nowrap;
-  position: absolute;
-  top:  -30%;
-  left: 24%;
+  
+  /* Variables CSS pour la position de la souris */
+  --mouse-x: -9999px;
+  --mouse-y: -9999px;
+  
+  /* Couleur de base (noir) avec gradient radial pour l'effet */
+  background: radial-gradient(
+    circle 100px at var(--mouse-x) var(--mouse-y),
+    #5D1616,
+    #000000 100px
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #000000;
+  
+  transition: background 0.15s ease;
 }
 
 .hero-there {
@@ -161,13 +185,26 @@ body {
   font-weight: 400;
   line-height: 1;
   letter-spacing: 0;
-  color: #000000;
   margin: 0;
   flex-shrink: 0;
   white-space: nowrap;
-  position: absolute;
-  top: -30%;
-  right: 23%;
+  
+  /* Variables CSS pour la position de la souris */
+  --mouse-x: -9999px;
+  --mouse-y: -9999px;
+  
+  /* Couleur de base (noir) avec gradient radial pour l'effet */
+  background: radial-gradient(
+    circle 100px at var(--mouse-x) var(--mouse-y),
+    #5D1616,
+    #000000 100px
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #000000;
+  
+  transition: background 0.15s ease;
 }
 
 /* Hero Middle: I AM RAYANN - Collage - Text */
@@ -190,6 +227,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  position: relative;
+  cursor: pointer;
 }
 
 .intro-am {
@@ -198,8 +237,24 @@ body {
   font-weight: bold;
   line-height: 75px;
   letter-spacing: 0;
-  color: #000000;
   margin: 0;
+  
+  /* Variables CSS pour la position de la souris */
+  --mouse-x: -9999px;
+  --mouse-y: -9999px;
+  
+  /* Couleur de base (noir) avec gradient radial pour l'effet */
+  background: radial-gradient(
+    circle 80px at var(--mouse-x) var(--mouse-y),
+    #5D1616,
+    #000000 80px
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #000000;
+  
+  transition: background 0.15s ease;
 }
 
 .intro-rayann {
@@ -208,8 +263,24 @@ body {
   font-weight: bold;
   line-height: 75px;
   letter-spacing: 0;
-  color: #5D1616;
   margin: 0;
+  
+  /* Variables CSS pour la position de la souris */
+  --mouse-x: -9999px;
+  --mouse-y: -9999px;
+  
+  /* Couleur de base (bordeaux) avec gradient radial pour l'effet */
+  background: radial-gradient(
+    circle 80px at var(--mouse-x) var(--mouse-y),
+    #000000,
+    #5D1616 80px
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #5D1616;
+  
+  transition: background 0.15s ease;
 }
 
 .intro-description {
@@ -245,13 +316,13 @@ body {
   object-fit: cover;
   border-radius: 10px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  filter: grayscale(100%);
+  filter: sepia(100%) saturate(40%) brightness(0.6) contrast(1.1) hue-rotate(10deg);
   transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   cursor: pointer;
 }
 
 .col-item:hover {
-  filter: grayscale(0%);
+  filter: sepia(0%) saturate(100%) brightness(1) hue-rotate(0deg);
   box-shadow: 0 16px 48px rgba(93, 22, 22, 0.6), 0 8px 24px rgba(93, 22, 22, 0.4);
 }
 
