@@ -28,12 +28,9 @@ function App() {
 
       {/* Hero Section - All Images and Text */}
       <section className="hero">
-        <div className="hero-top">
+        <div className="hero-middle">
           <h1 className="hero-hi">Hi</h1>
           <h1 className="hero-there">There</h1>
-        </div>
-
-        <div className="hero-middle">
           <div className="hero-left">
             <h2 className="intro-am">I AM</h2>
             <h2 className="intro-rayann">RAYANN</h2>
@@ -59,7 +56,7 @@ function App() {
           {/* Right Text */}
           <div className="hero-right">
             <p className="specialization">
-              Specialized in Front-End Development, UI/UX Design, and Web Applications.
+              Specialized in Front-End Development, UI/UX Design, <br />and Web Applications.
             </p>
             <h3 className="title-engineer">
               <span>COMPUTER</span>
