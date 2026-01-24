@@ -178,18 +178,35 @@ function App() {
 
       {/* Footer */}
       <footer className="footer">
-        <div className="footer-traits">
-          <span>PROBLEM SOLVING</span>
-          <span className="dot">•</span>
-          <span>TEAMWORK</span>
-          <span className="dot">•</span>
-          <span>COMMUNICATION</span>
-          <span className="dot">•</span>
-          <span>LEADERSHIP</span>
-          <span className="dot">•</span>
-          <span>INITIATIVE</span>
-          <span className="dot">•</span>
-          <span>CURIOSITY</span>
+        <div className="marquee">
+          <div className="marquee-content">
+            <span>PROBLEM SOLVING</span>
+            <span className="dot">•</span>
+            <span>TEAMWORK</span>
+            <span className="dot">•</span>
+            <span>COMMUNICATION</span>
+            <span className="dot">•</span>
+            <span>LEADERSHIP</span>
+            <span className="dot">•</span>
+            <span>INITIATIVE</span>
+            <span className="dot">•</span>
+            <span>CURIOSITY</span>
+            <span className="dot">•</span>
+          </div>
+          <div className="marquee-content" aria-hidden="true">
+            <span>PROBLEM SOLVING</span>
+            <span className="dot">•</span>
+            <span>TEAMWORK</span>
+            <span className="dot">•</span>
+            <span>COMMUNICATION</span>
+            <span className="dot">•</span>
+            <span>LEADERSHIP</span>
+            <span className="dot">•</span>
+            <span>INITIATIVE</span>
+            <span className="dot">•</span>
+            <span>CURIOSITY</span>
+            <span className="dot">•</span>
+          </div>
         </div>
       </footer>
     </div>
