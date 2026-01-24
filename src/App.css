@@ -160,6 +160,7 @@ body {
   margin: 0;
   flex-shrink: 0;
   white-space: nowrap;
+  display: inline-block;
   
   /* Variables CSS pour la position de la souris */
   --mouse-x: -9999px;
@@ -179,6 +180,17 @@ body {
   transition: background 0.15s ease;
 }
 
+/* Anti-glitch pour split chars */
+.hero-hi .split-char {
+  display: inline-block;
+  will-change: transform, opacity;
+  /* Hériter le gradient du parent */
+  background: inherit;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .hero-there {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 128px;
@@ -188,6 +200,7 @@ body {
   margin: 0;
   flex-shrink: 0;
   white-space: nowrap;
+  display: inline-block;
   
   /* Variables CSS pour la position de la souris */
   --mouse-x: -9999px;
@@ -205,6 +218,17 @@ body {
   color: #000000;
   
   transition: background 0.15s ease;
+}
+
+/* Anti-glitch pour split chars */
+.hero-there .split-char {
+  display: inline-block;
+  will-change: transform, opacity;
+  /* Hériter le gradient du parent */
+  background: inherit;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Hero Middle: I AM RAYANN - Collage - Text */
@@ -409,6 +433,8 @@ body {
   flex-direction: column;
   gap: 1.5rem;
   justify-content: center;
+  position: relative;
+  cursor: pointer;
 }
 
 .specialization {
@@ -436,6 +462,44 @@ body {
 
 .title-engineer span {
   display: block;
+}
+
+.engineer-computer {
+  /* Variables CSS pour la position de la souris */
+  --mouse-x: -9999px;
+  --mouse-y: -9999px;
+  
+  /* Couleur de base (noir) avec gradient radial pour l'effet */
+  background: radial-gradient(
+    circle 60px at var(--mouse-x) var(--mouse-y),
+    #5D1616,
+    #000000 60px
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #000000;
+  
+  transition: background 0.15s ease;
+}
+
+.engineer-engineer {
+  /* Variables CSS pour la position de la souris */
+  --mouse-x: -9999px;
+  --mouse-y: -9999px;
+  
+  /* Couleur de base (bordeaux) avec gradient radial pour l'effet */
+  background: radial-gradient(
+    circle 60px at var(--mouse-x) var(--mouse-y),
+    #000000,
+    #5D1616 60px
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #5D1616;
+  
+  transition: background 0.15s ease;
 }
 
 /* ========== FOOTER ========== */

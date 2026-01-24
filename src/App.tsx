@@ -1,5 +1,6 @@
 import './App.css'
 import { useRef } from 'react'
+import SplitText from './components/SplitText'
 import eloquence from './assets/eloquence.jpg'
 import parents from './assets/parents.JPG'
 import montreal from './assets/montreal.jpg'
@@ -14,6 +15,8 @@ function App() {
   const introRayannRef = useRef<HTMLHeadingElement>(null)
   const heroHiRef = useRef<HTMLHeadingElement>(null)
   const heroThereRef = useRef<HTMLHeadingElement>(null)
+  const computerRef = useRef<HTMLSpanElement>(null)
+  const engineerRef = useRef<HTMLSpanElement>(null)
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const updateGradient = (element: HTMLElement | null) => {
@@ -65,6 +68,31 @@ function App() {
     }
   }
 
+  const handleEngineerMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const updateGradient = (element: HTMLElement | null) => {
+      if (!element) return
+      const rect = element.getBoundingClientRect()
+      const x = e.clientX - rect.left
+      const y = e.clientY - rect.top
+      element.style.setProperty('--mouse-x', `${x}px`)
+      element.style.setProperty('--mouse-y', `${y}px`)
+    }
+
+    updateGradient(computerRef.current)
+    updateGradient(engineerRef.current)
+  }
+
+  const handleEngineerMouseLeave = () => {
+    if (computerRef.current) {
+      computerRef.current.style.setProperty('--mouse-x', '-9999px')
+      computerRef.current.style.setProperty('--mouse-y', '-9999px')
+    }
+    if (engineerRef.current) {
+      engineerRef.current.style.setProperty('--mouse-x', '-9999px')
+      engineerRef.current.style.setProperty('--mouse-y', '-9999px')
+    }
+  }
+
   return (
     <div className="portfolio">
       {/* Topbar */}
@@ -86,8 +114,32 @@ function App() {
       <section className="hero">
         <div className="hero-middle">
           <div className="hi-there-wrapper" onMouseMove={handleHiThereMouseMove} onMouseLeave={handleHiThereMouseLeave}>
-            <h1 className="hero-hi interactive-text" ref={heroHiRef}>Hi</h1>
-            <h1 className="hero-there interactive-text" ref={heroThereRef}>There</h1>
+            <SplitText 
+              text="Hi"
+              ref={heroHiRef}
+              className="hero-hi interactive-text"
+              splitType="chars"
+              from={{ opacity: 0, y: 40 }}
+              to={{ opacity: 1, y: 0 }}
+              duration={1.25}
+              stagger={0.1}
+              ease="power3.out"
+              once={true}
+              threshold={0.1}
+            />
+            <SplitText 
+              text="There"
+              ref={heroThereRef}
+              className="hero-there interactive-text"
+              splitType="chars"
+              from={{ opacity: 0, y: 40 }}
+              to={{ opacity: 1, y: 0 }}
+              duration={1.25}
+              stagger={0.1}
+              ease="power3.out"
+              once={true}
+              threshold={0.1}
+            />
           </div>
           <div className="hero-left" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
             <h2 className="intro-am interactive-text" ref={introAmRef}>I AM</h2>
@@ -112,13 +164,13 @@ function App() {
           </div>
 
           {/* Right Text */}
-          <div className="hero-right">
+          <div className="hero-right" onMouseMove={handleEngineerMouseMove} onMouseLeave={handleEngineerMouseLeave}>
             <p className="specialization">
               Specialized in Front-End Development, UI/UX Design, <br />and Web Applications.
             </p>
             <h3 className="title-engineer">
-              <span>COMPUTER</span>
-              <span>ENGINEER</span>
+              <span className="engineer-computer interactive-text" ref={computerRef}>COMPUTER</span>
+              <span className="engineer-engineer interactive-text" ref={engineerRef}>ENGINEER</span>
             </h3>
           </div>
         </div>
