@@ -1,0 +1,351 @@
+/* ========================================
+   PROJECTS SECTION - MAIN CONTAINER
+   ======================================== */
+
+.projects-section {
+  position: relative;
+  width: 100%;
+  min-height: 120vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #B7B7B7;
+}
+
+/* ========================================
+   BACKGROUND LAYER - BLURRED IMAGE GRID
+   ======================================== */
+
+.projects-background {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 2.5rem;
+  padding: 3rem;
+  z-index: 1;
+  pointer-events: auto;
+}
+
+.bg-tile {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.bg-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(12px) brightness(0.6) saturate(0.7);
+  opacity: 0.25;
+  transition: filter 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+              opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+              transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.bg-tile:hover img {
+  filter: blur(0px) brightness(1.1) saturate(1.15);
+  opacity: 0.95;
+  transform: scale(1.1);
+}
+
+/* ========================================
+   FOREGROUND LAYER - CARD FAN CONTAINER
+   ======================================== */
+
+.projects-foreground {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.projects-fan {
+  position: relative;
+  width: 600px;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/* ========================================
+   PROJECT CARD - BASE STYLES
+   ======================================== */
+
+.project-card {
+  position: absolute;
+  width: 260px;
+  height: 370px;
+  border-radius: 28px;
+  overflow: hidden;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform, box-shadow;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+              0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* ========================================
+   CARD FAN POSITIONING - COMPACT STATE
+   ======================================== */
+
+.project-card {
+  /* Compact fan positioning */
+  transform: 
+    translateX(calc(var(--card-offset) * 40px))
+    translateY(calc(abs(var(--card-offset)) * 7px))
+    rotate(calc(var(--card-offset) * 3deg));
+}
+
+/* ========================================
+   CARD FAN POSITIONING - OPEN STATE
+   ======================================== */
+
+.projects-fan.fan-open .project-card {
+  /* Open fan positioning */
+  transform: 
+    translateX(calc(var(--card-offset) * 160px))
+    translateY(calc(abs(var(--card-offset)) * 16px))
+    rotate(calc(var(--card-offset) * 8deg));
+}
+
+/* ========================================
+   CARD HOVER STATE - BRING TO FRONT
+   ======================================== */
+
+.project-card.card-active {
+  transform: 
+    translateX(calc(var(--card-offset) * 160px))
+    translateY(calc(abs(var(--card-offset)) * 16px - 12px))
+    rotate(calc(var(--card-offset) * 8deg))
+    scale(1.03);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+              0 12px 32px rgba(0, 0, 0, 0.4),
+              0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* ========================================
+   CARD TOP - IMAGE PANEL
+   ======================================== */
+
+.project-card-top {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 28px 28px 0 0;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.project-card-top img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.project-card:hover .project-card-top img {
+  transform: scale(1.08);
+}
+
+/* ========================================
+   CARD BODY - TEXT CONTENT
+   ======================================== */
+
+.project-card-body {
+  position: relative;
+  width: 100%;
+  height: 170px;
+  padding: 1.5rem 1.25rem;
+  background: var(--accent-color, #6B5B5B);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.project-card-body h3 {
+  font-family: Calibri, sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.project-card-body p {
+  font-family: Calibri, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #000000;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* ========================================
+   ACCESSIBILITY - REDUCED MOTION
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card,
+  .bg-tile img,
+  .project-card-top img {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .project-card.card-active {
+    transform: 
+      translateX(calc(var(--card-offset) * 180px))
+      translateY(calc(abs(var(--card-offset)) * 18px))
+      rotate(calc(var(--card-offset) * 8deg))
+      scale(1);
+  }
+}
+
+/* ========================================
+   RESPONSIVE - TABLET
+   ======================================== */
+
+@media (max-width: 1024px) {
+  .projects-background {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .projects-fan {
+    height: 500px;
+  }
+
+  .project-card {
+    width: 280px;
+    height: 400px;
+  }
+
+  .project-card-top {
+    height: 200px;
+  }
+
+  .project-card-body {
+    height: 200px;
+    padding: 1.5rem 1.25rem;
+  }
+
+  .project-card-body h3 {
+    font-size: 1.5rem;
+  }
+
+  .project-card-body p {
+    font-size: 1rem;
+  }
+
+  /* Adjust fan spacing for tablet */
+  .project-card {
+    transform: 
+      translateX(calc(var(--card-offset) * 35px))
+      translateY(calc(abs(var(--card-offset)) * 6px))
+      rotate(calc(var(--card-offset) * 2.5deg));
+  }
+
+  .projects-fan.fan-open .project-card {
+    transform: 
+      translateX(calc(var(--card-offset) * 140px))
+      translateY(calc(abs(var(--card-offset)) * 15px))
+      rotate(calc(var(--card-offset) * 6deg));
+  }
+
+  .project-card.card-active {
+    transform: 
+      translateX(calc(var(--card-offset) * 140px))
+      translateY(calc(abs(var(--card-offset)) * 15px - 10px))
+      rotate(calc(var(--card-offset) * 6deg))
+      scale(1.02);
+  }
+}
+
+/* ========================================
+   RESPONSIVE - MOBILE
+   ======================================== */
+
+@media (max-width: 768px) {
+  .projects-section {
+    min-height: auto;
+    padding: 3rem 0;
+  }
+
+  .projects-background {
+    display: none; /* Hide background grid on mobile for performance */
+  }
+
+  .projects-fan {
+    height: auto;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+
+  .project-card {
+    position: relative;
+    width: 100%;
+    max-width: 340px;
+    height: 420px;
+    transform: none !important;
+    margin: 0 auto;
+  }
+
+  .projects-fan.fan-open .project-card {
+    transform: none !important;
+  }
+
+  .project-card.card-active {
+    transform: scale(1.02) !important;
+  }
+
+  .project-card-top {
+    height: 220px;
+  }
+
+  .project-card-body {
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-card {
+    max-width: 100%;
+    height: 400px;
+  }
+
+  .project-card-top {
+    height: 200px;
+  }
+
+  .project-card-body {
+    padding: 1.25rem 1rem;
+  }
+
+  .project-card-body h3 {
+    font-size: 1.4rem;
+  }
+
+  .project-card-body p {
+    font-size: 0.95rem;
+  }
+}

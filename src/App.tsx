@@ -2,6 +2,7 @@ import './App.css'
 import { useRef, useState, useEffect } from 'react'
 import SplitText from './components/SplitText'
 import Particles from './components/Particles'
+import ProjectsSection from './components/ProjectsSection/ProjectsSection'
 import eloquence from './assets/eloquence.jpg'
 import parents from './assets/parents.JPG'
 import montreal from './assets/montreal.jpg'
@@ -12,7 +13,7 @@ import kart from './assets/kart.JPEG'
 import brevet from './assets/brevet.jpg'
 
 function App() {
-  const [activeSection, setActiveSection] = useState('home')
+  const [activeSection, setActiveSection] = useState('')
   const introAmRef = useRef<HTMLHeadingElement>(null)
   const introRayannRef = useRef<HTMLHeadingElement>(null)
   const heroHiRef = useRef<HTMLHeadingElement>(null)
@@ -22,35 +23,44 @@ function App() {
 
   // Scrollspy with IntersectionObserver
   useEffect(() => {
-    const sections = document.querySelectorAll('section[id]')
+    const sections = document.querySelectorAll('section[id]:not(.hero)')
     
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id)
-          }
-        })
-      },
-      {
-        threshold: 0.3,
-        rootMargin: '-20% 0px -20% 0px'
-      }
-    )
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -70% 0px',
+      threshold: 0
+    }
 
-    sections.forEach((section) => observer.observe(section))
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id)
+        } else {
+          // Si aucune section n'est visible, on désactive tout (on est dans hero)
+          const anySectionVisible = Array.from(sections).some(section => {
+            const rect = section.getBoundingClientRect()
+            return rect.top < window.innerHeight * 0.8 && rect.bottom > window.innerHeight * 0.2
+          })
+          if (!anySectionVisible) {
+            setActiveSection('')
+          }
+        }
+      })
+    }, observerOptions)
+
+    sections.forEach(section => observer.observe(section))
 
     return () => {
-      sections.forEach((section) => observer.unobserve(section))
+      sections.forEach(section => observer.unobserve(section))
     }
   }, [])
 
-  // Smooth scroll handler
+  // Smooth scroll on click
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
     e.preventDefault()
-    const section = document.getElementById(sectionId)
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    const targetSection = document.getElementById(sectionId)
+    if (targetSection) {
+      targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
       setActiveSection(sectionId)
     }
   }
@@ -135,7 +145,16 @@ function App() {
       {/* Topbar */}
       <header className="topbar">
         <div className="topbar-inner">
-          <div className="logo">
+          <div 
+            className="logo" 
+            onClick={() => {
+              const heroSection = document.querySelector('.hero')
+              if (heroSection) {
+                heroSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+              }
+            }}
+            style={{ cursor: 'pointer' }}
+          >
             <span className="logo-first">Rayann</span>
             <span className="logo-last">Sagnon</span>
           </div>
@@ -166,9 +185,9 @@ function App() {
       </header>
 
       {/* Hero Section - All Images and Text */}
-      <section id="home" className="hero">
+      <section className="hero">
         {/* Particles Background */}
-        <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}>
+        <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0, pointerEvents: 'none' }}>
           <Particles
             particleColors={["#8f6666"]}
             particleCount={300}
@@ -243,64 +262,57 @@ function App() {
               <span className="engineer-engineer interactive-text" ref={engineerRef}>ENGINEER</span>
             </h3>
           </div>
-        </div>
-      </section>
 
-      {/* Placeholder sections for scrollspy */}
-      <section id="projects" style={{ minHeight: '100vh', padding: '5rem 2rem', background: '#7a6668' }}>
-        <h2 style={{ fontSize: '3rem', color: '#fff', textAlign: 'center', marginBottom: '2rem' }}>Projects</h2>
-        <p style={{ color: '#fff', textAlign: 'center', maxWidth: '600px', margin: '0 auto' }}>
-          This section will contain your projects. The scrollspy will detect when you're in this section.
-        </p>
-      </section>
-
-      <section id="resume" style={{ minHeight: '100vh', padding: '5rem 2rem', background: '#6b5b5d' }}>
-        <h2 style={{ fontSize: '3rem', color: '#fff', textAlign: 'center', marginBottom: '2rem' }}>Resume</h2>
-        <p style={{ color: '#fff', textAlign: 'center', maxWidth: '600px', margin: '0 auto' }}>
-          This section will contain your resume. The scrollspy will detect when you're in this section.
-        </p>
-      </section>
-
-      <section id="contact" style={{ minHeight: '100vh', padding: '5rem 2rem', background: '#5c5053' }}>
-        <h2 style={{ fontSize: '3rem', color: '#fff', textAlign: 'center', marginBottom: '2rem' }}>Contact</h2>
-        <p style={{ color: '#fff', textAlign: 'center', maxWidth: '600px', margin: '0 auto' }}>
-          This section will contain your contact information. The scrollspy will detect when you're in this section.
-        </p>
-      </section>
-
-      {/* Footer */}
-      <footer className="footer">
-        <div className="marquee">
-          <div className="marquee-content">
-            <span>PROBLEM SOLVING</span>
-            <span className="dot">•</span>
-            <span>TEAMWORK</span>
-            <span className="dot">•</span>
-            <span>COMMUNICATION</span>
-            <span className="dot">•</span>
-            <span>LEADERSHIP</span>
-            <span className="dot">•</span>
-            <span>INITIATIVE</span>
-            <span className="dot">•</span>
-            <span>CURIOSITY</span>
-            <span className="dot">•</span>
-          </div>
-          <div className="marquee-content" aria-hidden="true">
-            <span>PROBLEM SOLVING</span>
-            <span className="dot">•</span>
-            <span>TEAMWORK</span>
-            <span className="dot">•</span>
-            <span>COMMUNICATION</span>
-            <span className="dot">•</span>
-            <span>LEADERSHIP</span>
-            <span className="dot">•</span>
-            <span>INITIATIVE</span>
-            <span className="dot">•</span>
-            <span>CURIOSITY</span>
-            <span className="dot">•</span>
+          {/* Marquee */}
+          <div className="marquee">
+            <div className="marquee-content">
+              <span>PROBLEM SOLVING</span>
+              <span className="dot">•</span>
+              <span>TEAMWORK</span>
+              <span className="dot">•</span>
+              <span>COMMUNICATION</span>
+              <span className="dot">•</span>
+              <span>LEADERSHIP</span>
+              <span className="dot">•</span>
+              <span>INITIATIVE</span>
+              <span className="dot">•</span>
+              <span>CURIOSITY</span>
+              <span className="dot">•</span>
+            </div>
+            <div className="marquee-content" aria-hidden="true">
+              <span>PROBLEM SOLVING</span>
+              <span className="dot">•</span>
+              <span>TEAMWORK</span>
+              <span className="dot">•</span>
+              <span>COMMUNICATION</span>
+              <span className="dot">•</span>
+              <span>LEADERSHIP</span>
+              <span className="dot">•</span>
+              <span>INITIATIVE</span>
+              <span className="dot">•</span>
+              <span>CURIOSITY</span>
+              <span className="dot">•</span>
+            </div>
           </div>
         </div>
-      </footer>
+      </section>
+
+      {/* Sections pour scrollspy */}
+      <ProjectsSection />
+
+      <section id="resume" style={{ minHeight: '100vh', padding: '5rem 2rem', background: '#9A8688' }}>
+        <h2 style={{ fontSize: '3rem', marginBottom: '2rem' }}>Resume</h2>
+        <p style={{ fontSize: '1.2rem', lineHeight: '1.8', maxWidth: '800px' }}>
+          Section Resume - Contenu à venir
+        </p>
+      </section>
+
+      <section id="contact" style={{ minHeight: '100vh', padding: '5rem 2rem', background: '#8A7A7C' }}>
+        <h2 style={{ fontSize: '3rem', marginBottom: '2rem' }}>Contact</h2>
+        <p style={{ fontSize: '1.2rem', lineHeight: '1.8', maxWidth: '800px' }}>
+          Section Contact - Contenu à venir
+        </p>
+      </section>
     </div>
   )
 }
