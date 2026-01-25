@@ -3,6 +3,7 @@ import { useRef, useState, useEffect } from 'react'
 import SplitText from './components/SplitText'
 import Particles from './components/Particles'
 import ProjectsSection from './components/ProjectsSection/ProjectsSection'
+import SplashScreen from './components/SplashScreen/SplashScreen'
 import eloquence from './assets/eloquence.jpg'
 import parents from './assets/parents.JPG'
 import montreal from './assets/montreal.jpg'
@@ -27,25 +28,32 @@ function App() {
     
     const observerOptions = {
       root: null,
-      rootMargin: '-20% 0px -70% 0px',
+      rootMargin: '-40% 0px -40% 0px',
       threshold: 0
     }
 
     const observer = new IntersectionObserver((entries) => {
+      let newActiveSection = ''
+      
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          setActiveSection(entry.target.id)
-        } else {
-          // Si aucune section n'est visible, on désactive tout (on est dans hero)
-          const anySectionVisible = Array.from(sections).some(section => {
-            const rect = section.getBoundingClientRect()
-            return rect.top < window.innerHeight * 0.8 && rect.bottom > window.innerHeight * 0.2
-          })
-          if (!anySectionVisible) {
-            setActiveSection('')
-          }
+          newActiveSection = entry.target.id
         }
       })
+      
+      // Only update if we have a new active section
+      if (newActiveSection) {
+        setActiveSection(newActiveSection)
+      } else {
+        // Check if we're truly in hero (no sections visible)
+        const anySectionVisible = Array.from(sections).some(section => {
+          const rect = section.getBoundingClientRect()
+          return rect.top < window.innerHeight * 0.6 && rect.bottom > window.innerHeight * 0.4
+        })
+        if (!anySectionVisible) {
+          setActiveSection('')
+        }
+      }
     }, observerOptions)
 
     sections.forEach(section => observer.observe(section))
@@ -142,6 +150,9 @@ function App() {
 
   return (
     <div className="portfolio">
+      {/* Splash Screen */}
+      <SplashScreen />
+
       {/* Topbar */}
       <header className="topbar">
         <div className="topbar-inner">

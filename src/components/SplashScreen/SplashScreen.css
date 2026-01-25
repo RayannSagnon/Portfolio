@@ -1,0 +1,86 @@
+/* ========================================
+   SPLASH SCREEN - OVERLAY
+   ======================================== */
+
+.splash-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #9A8688;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  will-change: opacity;
+}
+
+/* ========================================
+   SPLASH TEXT
+   ======================================== */
+
+.splash-text {
+  font-family: Calibri, sans-serif;
+  font-size: 180px;
+  font-weight: bold;
+  letter-spacing: 0;
+  display: flex;
+  will-change: transform, opacity;
+  transform-origin: center center;
+}
+
+.splash-first,
+.splash-last {
+  display: inline-flex;
+}
+
+.letter {
+  display: inline-block;
+  will-change: opacity, transform;
+}
+
+.splash-first .letter {
+  color: rgba(93, 22, 22, 0.35);
+}
+
+.splash-last .letter {
+  color: rgba(0, 0, 0, 0.35);
+}
+
+.letter.space {
+  width: 1rem;
+}
+
+/* ========================================
+   ACCESSIBILITY - REDUCED MOTION
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .splash-screen {
+    display: none !important;
+  }
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 1200px) {
+  .splash-text {
+    font-size: 140px;
+  }
+}
+
+@media (max-width: 768px) {
+  .splash-text {
+    font-size: 100px;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .splash-text {
+    font-size: 70px;
+  }
+}
