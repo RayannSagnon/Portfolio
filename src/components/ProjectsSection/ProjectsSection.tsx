@@ -3,7 +3,7 @@ import './ProjectsSection.css';
 
 // Import assets
 import image1 from '../../assets/kart.JPEG';
-import image2 from '../../assets/montreal.jpg';
+import image2 from '../../assets/majjer.png';
 import image3 from '../../assets/team.jpg';
 import image4 from '../../assets/falls.png';
 import image5 from '../../assets/eloquence.jpg';

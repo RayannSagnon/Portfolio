@@ -433,7 +433,7 @@ body {
   color: #000000;
   margin-top: 1rem;
   max-width: 220px;
-  transform: translateY(-15%);
+  transform: translateY(-10%) translateX(4%);
 }
 
 /* Center: Collage */
