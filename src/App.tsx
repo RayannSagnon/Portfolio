@@ -1,6 +1,7 @@
 import './App.css'
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import SplitText from './components/SplitText'
+import Particles from './components/Particles'
 import eloquence from './assets/eloquence.jpg'
 import parents from './assets/parents.JPG'
 import montreal from './assets/montreal.jpg'
@@ -11,12 +12,48 @@ import kart from './assets/kart.JPEG'
 import brevet from './assets/brevet.jpg'
 
 function App() {
+  const [activeSection, setActiveSection] = useState('home')
   const introAmRef = useRef<HTMLHeadingElement>(null)
   const introRayannRef = useRef<HTMLHeadingElement>(null)
   const heroHiRef = useRef<HTMLHeadingElement>(null)
   const heroThereRef = useRef<HTMLHeadingElement>(null)
   const computerRef = useRef<HTMLSpanElement>(null)
   const engineerRef = useRef<HTMLSpanElement>(null)
+
+  // Scrollspy with IntersectionObserver
+  useEffect(() => {
+    const sections = document.querySelectorAll('section[id]')
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id)
+          }
+        })
+      },
+      {
+        threshold: 0.3,
+        rootMargin: '-20% 0px -20% 0px'
+      }
+    )
+
+    sections.forEach((section) => observer.observe(section))
+
+    return () => {
+      sections.forEach((section) => observer.unobserve(section))
+    }
+  }, [])
+
+  // Smooth scroll handler
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    e.preventDefault()
+    const section = document.getElementById(sectionId)
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      setActiveSection(sectionId)
+    }
+  }
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const updateGradient = (element: HTMLElement | null) => {
@@ -103,15 +140,48 @@ function App() {
             <span className="logo-last">Sagnon</span>
           </div>
           <nav className="navbar-pill">
-            <a href="#projects">Projects</a>
-            <a href="#resume">Resume</a>
-            <a href="#contact">Contact</a>
+            <a 
+              href="#projects" 
+              className={activeSection === 'projects' ? 'is-active' : ''}
+              onClick={(e) => handleNavClick(e, 'projects')}
+            >
+              Projects
+            </a>
+            <a 
+              href="#resume" 
+              className={activeSection === 'resume' ? 'is-active' : ''}
+              onClick={(e) => handleNavClick(e, 'resume')}
+            >
+              Resume
+            </a>
+            <a 
+              href="#contact" 
+              className={activeSection === 'contact' ? 'is-active' : ''}
+              onClick={(e) => handleNavClick(e, 'contact')}
+            >
+              Contact
+            </a>
           </nav>
         </div>
       </header>
 
       {/* Hero Section - All Images and Text */}
-      <section className="hero">
+      <section id="home" className="hero">
+        {/* Particles Background */}
+        <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}>
+          <Particles
+            particleColors={["#8f6666"]}
+            particleCount={300}
+            particleSpread={10}
+            speed={0.1}
+            particleBaseSize={100}
+            moveParticlesOnHover={false}
+            alphaParticles={false}
+            disableRotation={false}
+            pixelRatio={1}
+          />
+        </div>
+
         <div className="hero-middle">
           <div className="hi-there-wrapper" onMouseMove={handleHiThereMouseMove} onMouseLeave={handleHiThereMouseLeave}>
             <SplitText 
@@ -174,6 +244,28 @@ function App() {
             </h3>
           </div>
         </div>
+      </section>
+
+      {/* Placeholder sections for scrollspy */}
+      <section id="projects" style={{ minHeight: '100vh', padding: '5rem 2rem', background: '#7a6668' }}>
+        <h2 style={{ fontSize: '3rem', color: '#fff', textAlign: 'center', marginBottom: '2rem' }}>Projects</h2>
+        <p style={{ color: '#fff', textAlign: 'center', maxWidth: '600px', margin: '0 auto' }}>
+          This section will contain your projects. The scrollspy will detect when you're in this section.
+        </p>
+      </section>
+
+      <section id="resume" style={{ minHeight: '100vh', padding: '5rem 2rem', background: '#6b5b5d' }}>
+        <h2 style={{ fontSize: '3rem', color: '#fff', textAlign: 'center', marginBottom: '2rem' }}>Resume</h2>
+        <p style={{ color: '#fff', textAlign: 'center', maxWidth: '600px', margin: '0 auto' }}>
+          This section will contain your resume. The scrollspy will detect when you're in this section.
+        </p>
+      </section>
+
+      <section id="contact" style={{ minHeight: '100vh', padding: '5rem 2rem', background: '#5c5053' }}>
+        <h2 style={{ fontSize: '3rem', color: '#fff', textAlign: 'center', marginBottom: '2rem' }}>Contact</h2>
+        <p style={{ color: '#fff', textAlign: 'center', maxWidth: '600px', margin: '0 auto' }}>
+          This section will contain your contact information. The scrollspy will detect when you're in this section.
+        </p>
       </section>
 
       {/* Footer */}

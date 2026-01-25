@@ -50,7 +50,7 @@ body {
   display: flex;
   gap: 0.5rem;
   font-family: Calibri, sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-weight: bold;
   letter-spacing: 0;
 }
@@ -65,27 +65,85 @@ body {
 
 .navbar-pill {
   display: flex;
-  gap: 2.5rem;
+  gap: 0.5rem;
   align-items: center;
   background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(var(--nav-blur, 12px));
   border-radius: 999px;
-  padding: 0.6rem 2rem;
+  padding: 0.5rem;
   border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, var(--nav-shadow-strength, 0.08));
+  opacity: var(--nav-opacity, 1);
+  transition: transform 0.2s ease;
+  will-change: backdrop-filter, opacity, box-shadow, transform;
 }
 
 .navbar-pill a {
+  position: relative;
   text-decoration: none;
   color: #000000;
   font-family: Calibri, sans-serif;
   font-size: 0.95rem;
   font-weight: normal;
-  transition: color 0.3s ease;
+  padding: 0.5rem 1.25rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: transparent;
+  overflow: hidden;
 }
 
+/* Effet contour interne via ::before */
+.navbar-pill a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  box-shadow: inset 0 0 0 0 rgba(93, 22, 22, 0);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+/* Hover state */
 .navbar-pill a:hover {
+  color: #5f4141;
+  background: rgba(93, 22, 22, 0.05);
+}
+
+.navbar-pill a:hover::before {
+  opacity: 1;
+  border-color: rgba(93, 22, 22, 0.3);
+  box-shadow: 
+    inset 0 0 8px rgba(93, 22, 22, 0.15),
+    0 0 12px rgba(93, 22, 22, 0.2);
+}
+
+/* Active state (click) */
+.navbar-pill a:active::before {
+  border-color: rgba(93, 22, 22, 0.5);
+  box-shadow: 
+    inset 0 0 12px rgba(93, 22, 22, 0.25),
+    0 0 16px rgba(93, 22, 22, 0.3);
+}
+
+/* Active section state */
+.navbar-pill a.is-active {
   color: #5D1616;
+  background: rgba(93, 22, 22, 0.08);
+  font-weight: 500;
+}
+
+.navbar-pill a.is-active::before {
+  opacity: 1;
+  border-color: rgba(93, 22, 22, 0.4);
+  box-shadow: 
+    inset 0 0 10px rgba(93, 22, 22, 0.2),
+    0 0 14px rgba(93, 22, 22, 0.25);
 }
 
 /* ========== HERO SECTION ========== */
@@ -289,6 +347,7 @@ body {
   line-height: 75px;
   letter-spacing: 0;
   margin: 0;
+  transform: translateY(10px);
   
   /* Variables CSS pour la position de la souris */
   --mouse-x: -9999px;
@@ -310,13 +369,14 @@ body {
 
 .intro-description {
   font-family: Calibri, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
-  line-height: 15px;
+  line-height: 18px;
   letter-spacing: 0;
   color: #000000;
   margin-top: 1rem;
   max-width: 220px;
+  transform: translateY(-15%);
 }
 
 /* Center: Collage */
@@ -446,7 +506,7 @@ body {
   letter-spacing: 0;
   color: #000000;
   max-width: 180px;
-  transform: translateX(-15%);
+  transform: translateX(-50%) translateY(-280%);
 }
 
 .title-engineer {
