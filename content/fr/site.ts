@@ -15,14 +15,14 @@ export const site = {
   portfolioUrl: "https://www.rayannsagnon.com",
   portfolioHost: "www.rayannsagnon.com",
   description:
-    "Portfolio officiel de Rayann Sagnon sur www.rayannsagnon.com. Étudiant en génie électrique à l'Université d'Ottawa, en direction du product management. Conçoit et livre des produits, du premier problème utilisateur jusqu'au lancement.",
+    "Portfolio officiel de Rayann Sagnon sur www.rayannsagnon.com. Étudiant en génie à l'Université d'Ottawa, en direction du product management. Produits et travail client, du problème à la livraison.",
   ogTitle: "Rayann Sagnon · Produit · Ingénierie",
   ogDescription:
-    "Génie électrique à uOttawa, en direction du produit. Études de cas sur outils académiques, accessibilité et systèmes qui shippent.",
+    "Étudiant en génie vers le PM. Travail client Standout Studio, SIgns en préparation de beta, StudentOS en exploration produit.",
   /** Photo de profil pour Open Graph et le schéma Person */
   profileImage: "/images/about-teaser/makerspace-lab.jpeg",
   profileImageAlt:
-    "Rayann Sagnon, étudiant en génie électrique à l'Université d'Ottawa, en direction du product management",
+    "Rayann Sagnon, étudiant en génie à l'Université d'Ottawa, en direction du product management",
 } as const;
 
 export type BlogCategoryId = "all" | "embedded" | "ai" | "robotics" | "architecture" | "essays";

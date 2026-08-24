@@ -15,14 +15,14 @@ export const site = {
   portfolioUrl: "https://www.rayannsagnon.com",
   portfolioHost: "www.rayannsagnon.com",
   description:
-    "Official portfolio of Rayann Sagnon at www.rayannsagnon.com. Electrical Engineering student at the University of Ottawa, building toward product management. Designs and ships products from the first user problem through launch.",
+    "Official portfolio of Rayann Sagnon at www.rayannsagnon.com. Engineering student at the University of Ottawa building toward product management. Products and client work from problem to delivery.",
   ogTitle: "Rayann Sagnon · Product · Engineering",
   ogDescription:
-    "Electrical Engineering at uOttawa, building toward product. Case studies in academic tools, accessibility, and systems that ship.",
+    "Engineering student building toward PM. Standout Studio client work, SIgns entering beta, StudentOS product exploration.",
   /** Headshot for OG, schema, and Google Images on rayannsagnon.com */
   profileImage: "/images/about-teaser/makerspace-lab.jpeg",
   profileImageAlt:
-    "Rayann Sagnon, electrical engineering student at the University of Ottawa building toward product management",
+    "Rayann Sagnon, engineering student at the University of Ottawa building toward product management",
 } as const;
 
 export type BlogCategoryId = "all" | "embedded" | "ai" | "robotics" | "architecture" | "essays";

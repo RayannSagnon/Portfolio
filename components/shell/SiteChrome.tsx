@@ -27,18 +27,9 @@ export function SiteChrome() {
   const [logoLightMode, setLogoLightMode] = useState(false);
   const [dockLightMode, setDockLightMode] = useState(false);
 
-  // Hide navigation while ScatterIntro is active.
+  // Show chrome immediately (ScatterIntro no longer gates the homepage).
   useEffect(() => {
-    const check = () => {
-      if (pathname !== "/") {
-        setVisible(true);
-        return;
-      }
-      setVisible(window.scrollY >= window.innerHeight * 1.85);
-    };
-    window.addEventListener("scroll", check, { passive: true });
-    check();
-    return () => window.removeEventListener("scroll", check);
+    setVisible(true);
   }, [pathname]);
 
   // Track the section currently under the fixed navigation.

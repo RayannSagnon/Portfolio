@@ -137,7 +137,11 @@ function MetricBars({
   metrics,
   beforeLabel,
   afterLabel,
-}: Pick<ProjectStoryData["why"], "metrics" | "beforeLabel" | "afterLabel">) {
+}: {
+  metrics: NonNullable<ProjectStoryData["why"]["metrics"]>;
+  beforeLabel: string;
+  afterLabel: string;
+}) {
   return (
     <div className="project-story-metrics">
       <div className="project-story-metrics-legend">
@@ -480,6 +484,36 @@ export function ProjectVisualStory({ story, hue, projectName }: Props) {
           box-shadow: 0 0 24px var(--story-accent-glow);
         }
 
+        .project-story-decisions {
+          display: flex;
+          flex-direction: column;
+          gap: 0.85rem;
+        }
+
+        .project-story-decision {
+          display: flex;
+          flex-direction: column;
+          gap: 0.35rem;
+          padding: 0.85rem 0.95rem;
+          border: 1px solid color-mix(in srgb, var(--story-accent) 22%, transparent);
+          background: rgba(255, 255, 255, 0.02);
+        }
+
+        .project-story-decision strong {
+          font-family: var(--font-jetbrains), monospace;
+          font-size: 8px;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          color: var(--story-accent);
+        }
+
+        .project-story-decision span {
+          font-size: 0.9rem;
+          line-height: 1.5;
+          color: var(--fg-dim);
+          font-weight: 300;
+        }
+
         .project-story-metrics {
           display: flex;
           flex-direction: column;
@@ -765,14 +799,26 @@ export function ProjectVisualStory({ story, hue, projectName }: Props) {
               </div>
               <span className="project-story-hub-label">{story.why.afterLabel}</span>
               <div className="project-story-tab-cloud project-story-tab-cloud--after">
-                <span className="project-story-tab project-story-tab--hero">StudentOS</span>
+                <span className="project-story-tab project-story-tab--hero">{projectName}</span>
               </div>
             </div>
-            <MetricBars
-              metrics={story.why.metrics}
-              beforeLabel={story.why.beforeLabel}
-              afterLabel={story.why.afterLabel}
-            />
+            {story.why.metrics && story.why.metrics.length > 0 ? (
+              <MetricBars
+                metrics={story.why.metrics}
+                beforeLabel={story.why.beforeLabel}
+                afterLabel={story.why.afterLabel}
+              />
+            ) : null}
+            {story.why.decisions && story.why.decisions.length > 0 ? (
+              <div className="project-story-decisions" aria-label="Product decisions">
+                {story.why.decisions.map((decision) => (
+                  <div key={decision.label} className="project-story-decision">
+                    <strong>{decision.label}</strong>
+                    <span>{decision.body}</span>
+                  </div>
+                ))}
+              </div>
+            ) : null}
           </div>
         </article>
       </Reveal>

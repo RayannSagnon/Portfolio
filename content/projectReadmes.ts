@@ -21,24 +21,63 @@ export type ProjectReadmeData = {
 };
 
 export const projectReadmes: Record<string, ProjectReadmeData> = {
+  standout: {
+    badges: [
+      { label: "Type", value: "Client studio" },
+      { label: "Role", value: "Co-founder" },
+      { label: "Market", value: "Ottawa · EN/FR" },
+      { label: "Stage", value: "Delivering" },
+    ],
+    why: {
+      title: "Why Standout Studio",
+      body: "Standout Studio is where product work meets paying clients: discovery meetings, scoped proposals, design and build iterations, and live sites. Early revenue is about $3K so far. That loop, problem → delivery → payment, is the proof, not a vanity metric.",
+    },
+    highlights: [
+      "Co-founder role across product framing and web delivery",
+      "Real client meetings and feedback rounds",
+      "Bilingual Ottawa studio (English and French)",
+      "Shipped marketing sites for paying clients",
+      "About $3K in early studio revenue",
+    ],
+    techStack: [
+      "Next.js (App Router)",
+      "TypeScript",
+      "Tailwind CSS",
+      "Figma",
+      "Vercel",
+    ],
+    gettingStarted: {
+      prerequisites: ["A browser", "Curiosity about client delivery"],
+      steps: [
+        "Visit https://standoutstudio.ca for the live studio site.",
+        "Review the GitHub repo for the marketing stack.",
+        "Read this case study for discovery → delivery decisions.",
+      ],
+    },
+    roadmap: [
+      "Grow a small set of well-scoped client relationships",
+      "Keep documenting V1 → feedback → V2 when clients allow it",
+      "Stay bilingual and Ottawa-rooted",
+    ],
+  },
   studentos: {
     badges: [
       { label: "Platform", value: "React Native" },
       { label: "Expo", value: "SDK 54" },
-      { label: "Stage", value: "Closed beta" },
+      { label: "Stage", value: "Paused exploration" },
       { label: "License", value: "MIT" },
     ],
     why: {
-      title: "Why StudentOS",
-      body: "University students do not fail because they lack tools. They fail because academic life is fragmented. StudentOS is a student-first planner that behaves like an academic OS: home, classes, calendar, focus, Ask AI, and cloud sync with school-email OTP for closed beta.",
+      title: "Why StudentOS, and why it paused",
+      body: "University students fail from fragmented academic life, not from a lack of tools. StudentOS explores an academic OS: home, classes, calendar, focus, Ask AI, and a school-email OTP path. I paused before a paid beta because useful AI coaching has a marginal cost and Apple distribution is not free. A portfolio beta that burns money without monetization is a bad product decision.",
     },
     highlights: [
       "Academic objects: classes, tasks, exams, vacations",
       "Home command center with weekly progress and next actions",
       "Focus timer / stopwatch with music in the product loop",
-      "Ask AI study coach via server proxy",
-      "Closed beta join with school email + OTP",
-      "Native path: Expo Go → EAS → TestFlight / App Store",
+      "Ask AI study coach via server proxy (the cost center)",
+      "School-email OTP path designed, not a live tester cohort",
+      "Paused on purpose before Apple fees and API burn",
     ],
     techStack: [
       "React Native",
@@ -52,13 +91,13 @@ export const projectReadmes: Record<string, ProjectReadmeData> = {
       prerequisites: [
         "Node.js 20+",
         "npm",
-        "Expo Go on iPhone for device testing",
+        "Expo Go if you want to run the prototype",
       ],
       steps: [
         "Clone the StudentOS repository.",
         "Run npm install (and npm --prefix server install if using the local API).",
         "Start with npm run start:go and scan the QR code in Expo Go.",
-        "Join the closed beta with school email + verification code.",
+        "Treat this as a prototype exploration, not a public beta.",
       ],
       buildCommand: "npm run start:go",
     },
@@ -66,13 +105,12 @@ export const projectReadmes: Record<string, ProjectReadmeData> = {
 components/    # Shared UI
 src/           # Domain logic
 server/        # Express API + SQLite
-store/         # Beta + native distribution docs
+store/         # Native distribution docs
 screenshots/   # Product captures`,
     roadmap: [
-      "Harden native iOS distribution (TestFlight / App Store)",
-      "Complete calendar and music OAuth providers",
-      "Grow closed-beta feedback into prioritized product learning",
-      "Scale only after students run a full semester inside StudentOS",
+      "Resume only if monetization and AI cost model are clear",
+      "Keep the academic OS vision documented as product learning",
+      "Do not run a vanity beta that burns distribution or API budget",
     ],
   },
   signs: {
@@ -80,11 +118,11 @@ screenshots/   # Product captures`,
       { label: "Platform", value: "React Native" },
       { label: "Team", value: "2 builders" },
       { label: "Focus", value: "Accessibility" },
-      { label: "Pillars", value: "Dictionary + lessons" },
+      { label: "Stage", value: "Android beta ahead" },
     ],
     why: {
       title: "Why SIgns",
-      body: "Most language-learning products focus on spoken languages. SIgns bridges that gap with a mobile-first experience built around a visual dictionary and structured, bite-sized lessons, shipped by a two-person team.",
+      body: "Most language-learning products focus on spoken languages. SIgns, co-built with Steven Readman, centers a visual dictionary and structured lessons for ASL learners. We are entering store submission and real tester recruitment. This page will gain real feedback metrics only after that loop exists.",
     },
     highlights: [
       "Visual dictionary with search, categories, and favorites",
@@ -92,6 +130,7 @@ screenshots/   # Product captures`,
       "Recognition, matching, and recall exercises",
       "Progress tracking and completion streaks",
       "Single React Native codebase for iOS and Android",
+      "Co-built with Steven Readman; shared product and engineering ownership",
     ],
     techStack: [
       "React Native",
@@ -118,10 +157,9 @@ screenshots/   # Product captures`,
   assets/onboarding/
   # React Native screens, navigation, and state`,
     roadmap: [
-      "Expand conversational lesson coverage",
-      "Strengthen progress and review loops",
-      "Improve discovery across the dictionary",
-      "Keep accessibility first as the product grows",
+      "Finish Android beta packaging and tester recruitment",
+      "Replace assumptions with observed learner problems",
+      "Iterate lesson and practice loops from real feedback",
     ],
   },
 };

@@ -3,7 +3,7 @@ export type Project = {
   code: string;
   name: string;
   tag: string;
-  type: "software" | "embedded" | "ai" | "hardware" | "speculative";
+  type: "software" | "embedded" | "ai" | "hardware" | "speculative" | "client";
   hue: number;
   glyph: string;
   blurb: string;
@@ -15,6 +15,11 @@ export type Project = {
   repoUrl?: string;
   /** Carousel-only slot, no dedicated project page */
   comingSoon?: boolean;
+  /**
+   * When false, excluded from the homepage product carousel.
+   * Use for client / venture work shown in VentureSpotlight instead.
+   */
+  showInCarousel?: boolean;
   architecture: [string, string][];
   tradeoffs: [string, string][];
   highlights: [string, string][];
@@ -22,49 +27,72 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "studentos",
-    code: "01",
-    name: "StudentOS",
-    tag: "Academic OS · Closed Beta",
-    type: "software",
-    hue: 218,
+    slug: "standout",
+    code: "00",
+    name: "Standout Studio",
+    tag: "Client work · Co-founder",
+    type: "client",
+    hue: 172,
     glyph: "",
-    repoUrl: "https://github.com/RayannSagnon/StudentOS",
-    cardImage: "/images/projects/studentos/card.png",
+    repoUrl: "https://github.com/RayannSagnon/standout-studio",
+    showInCarousel: false,
     blurb:
-      "An academic operating system for university students: classes, tasks, calendar, focus, and Ask AI in one workspace, now in closed beta on React Native / Expo.",
+      "Bilingual Ottawa web studio. Real client meetings, scoped proposals, design and build iterations, and delivered sites, about $3K in early revenue so far.",
     architecture: [],
     tradeoffs: [
-      ["Decision", "School-email OTP for closed beta onboarding"],
-      ["Tradeoff", "Academic depth over becoming another Notion"],
-      ["Constraint", "Validate usage before scaling App Store distribution"],
+      ["Decision", "Partner with clients as a studio, not one-off freelance tickets"],
+      ["Tradeoff", "Fewer projects, clearer scope, and care after launch"],
+      ["Constraint", "Budget and timeline set with the client before build"],
     ],
     highlights: [
-      ["Why", "Students fail from fragmentation, not from a lack of tools."],
-      ["Next", "Native iOS path: Expo Go → TestFlight → App Store."],
+      ["Role", "Co-founder · product framing, web delivery, client iteration"],
+      ["Proof", "Paying clients, live sites, bilingual Ottawa studio"],
     ],
   },
   {
     slug: "signs",
-    code: "02",
+    code: "01",
     name: "SIgns",
-    tag: "Accessibility · Sign Language",
+    tag: "Accessibility · Preparing Android beta",
     type: "software",
     hue: 168,
     glyph: "",
     repoUrl: "https://github.com/screadman/SIgns",
     cardImage: "/images/projects/signs/card.png",
     blurb:
-      "A React Native app, built by a team of two, that makes learning sign language approachable through a visual dictionary and bite-sized structured lessons.",
+      "A React Native learning product co-built with Steven Readman. Visual dictionary and structured lessons for ASL learners. Now entering real-world testing and Android beta.",
     architecture: [],
     tradeoffs: [
       ["Decision", "Dictionary + lessons as the two product pillars"],
-      ["Tradeoff", "One RN codebase so a two-person team can ship both platforms"],
-      ["Constraint", "Keep learning accessible without turning into a spoken-language clone"],
+      ["Tradeoff", "One RN codebase so a two-person team can reach both platforms"],
+      ["Constraint", "Keep learning accessible without becoming a spoken-language clone"],
     ],
     highlights: [
       ["Why", "Spoken-language apps dominate; sign languages stay underserved."],
-      ["Next", "Deeper lesson paths and stronger progress loops."],
+      ["Now", "Store path, beta recruitment, and feedback-driven iteration."],
+    ],
+  },
+  {
+    slug: "studentos",
+    code: "02",
+    name: "StudentOS",
+    tag: "Product exploration · Paused before beta",
+    type: "software",
+    hue: 218,
+    glyph: "",
+    repoUrl: "https://github.com/RayannSagnon/StudentOS",
+    cardImage: "/images/projects/studentos/card.png",
+    blurb:
+      "An academic OS prototype: classes, tasks, calendar, focus, and Ask AI in one workspace. Advanced far enough to expose a hard product decision, then paused before paid beta.",
+    architecture: [],
+    tradeoffs: [
+      ["Decision", "Pause before Apple distribution fees and AI API spend on free testers"],
+      ["Tradeoff", "Academic depth over becoming another Notion"],
+      ["Constraint", "Useful AI coaching has a marginal cost without monetization"],
+    ],
+    highlights: [
+      ["Why", "Students fail from fragmentation, not from a lack of tools."],
+      ["Lesson", "Do not run a beta that burns money before the model is clear."],
     ],
   },
 ];

@@ -20,19 +20,19 @@ export const SITE_NAME = "Rayann Sagnon";
 export const DEFAULT_TITLE = "Rayann Sagnon · Product · Engineering";
 
 export const DEFAULT_DESCRIPTION =
-  "Official portfolio of Rayann Sagnon, Electrical Engineering student at the University of Ottawa, building toward product management. Designs and ships products from the first user problem through launch.";
+  "Engineering student at uOttawa building toward Product Management. Standout Studio client work, SIgns entering beta, StudentOS product exploration paused on purpose.";
 
 export const SEO_KEYWORDS = [
   "Rayann Sagnon",
   "Rayann Sagnon portfolio",
   "Rayann Sagnon product",
   "Rayann Sagnon uOttawa",
-  "electrical engineering portfolio",
   "aspiring product manager",
+  "Standout Studio",
   "StudentOS",
   "SIgns",
   "University of Ottawa",
-  "Ottawa engineer",
+  "Ottawa",
 ] as const;
 
 export function absoluteUrl(path = "/") {

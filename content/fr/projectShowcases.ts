@@ -26,8 +26,23 @@ export type ProjectShowcaseData = {
 };
 
 export const projectShowcases: Record<string, ProjectShowcaseData> = {
+  standout: {
+    status: "Travail client · Studio bilingue",
+    showHeroBanner: false,
+    hero: {
+      src: "/images/projects/signs/hero-banner-fr.png",
+      alt: "Standout Studio, studio web bilingue a Ottawa",
+      width: 1600,
+      height: 900,
+    },
+    screenFrame: {
+      width: 640,
+      height: 1380,
+    },
+    screens: [],
+  },
   studentos: {
-    status: "Beta fermée · Expo",
+    status: "Exploration · En pause avant beta",
     showHeroBanner: true,
     hero: {
       src: "/images/projects/studentos/hero-presentation.png",
@@ -43,8 +58,8 @@ export const projectShowcases: Record<string, ProjectShowcaseData> = {
       {
         src: "/images/projects/studentos/screen-login.png",
         alt: "Écran de connexion OTP StudentOS",
-        label: "Rejoindre la beta",
-        caption: "Courriel scolaire + code unique : onboarding beta à faible friction.",
+        label: "Rejoindre",
+        caption: "Courriel scolaire + code unique : onboarding à faible friction conçu pour une beta.",
         width: 640,
         height: 1380,
       },
@@ -75,7 +90,7 @@ export const projectShowcases: Record<string, ProjectShowcaseData> = {
     ],
   },
   signs: {
-    status: "Livré · Équipe de 2",
+    status: "Préparation beta Android · Équipe de 2",
     showHeroBanner: true,
     hero: {
       src: "/images/projects/signs/hero-banner-fr.png",

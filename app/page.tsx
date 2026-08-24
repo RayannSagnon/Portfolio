@@ -1,14 +1,12 @@
 import type { ReactNode } from "react";
-import { ScatterIntro } from "@/components/sections/ScatterIntro";
 import { Hero } from "@/components/sections/Hero";
+import { VentureSpotlight } from "@/components/sections/VentureSpotlight";
 import { AboutTeaser } from "@/components/sections/AboutTeaser";
 import { Vision } from "@/components/sections/Vision";
 import { ImmersiveCarousel } from "@/components/projects/ImmersiveCarousel";
-import { Philosophy } from "@/components/sections/Philosophy";
 import { Contact } from "@/components/sections/Contact";
 import { HashAnchorJump } from "@/components/motion/HashAnchorJump";
 
-// Card = section that slides up over the previous one
 function Card({
   children,
   bg = "var(--bg)",
@@ -46,18 +44,12 @@ export default function Home() {
     <main>
       <HashAnchorJump />
 
-      {/* 1. Intro: beige scatter, Hero slides up over it */}
-      <ScatterIntro />
+      <div id="hero-anchor" style={{ height: 0 }} />
 
-      {/* Scroll anchor for nav dock: not sticky so lenis.scrollTo(el) works */}
-      <div id="hero-anchor" style={{ height: 0, marginTop: -24 }} />
-
-      {/* 2. Hero: cover effect over ScatterIntro */}
       <Card z={1}>
         <Hero />
       </Card>
 
-      {/* 3. AboutTeaser: z=2, solid bg, covers Hero on scroll */}
       <div
         className="home-section"
         style={{
@@ -67,32 +59,33 @@ export default function Home() {
           isolation: "isolate",
         }}
       >
-        <AboutTeaser />
+        <VentureSpotlight />
       </div>
 
-      {/* 4. Vision: z=3, solid dark bg, slides over Hero seamlessly (no card edge) */}
-      <div className="home-section" style={{ position: "relative", zIndex: 3, backgroundColor: "var(--bg)" }}>
-        <Vision />
-      </div>
-
-      {/* 5. ImmersiveCarousel: card cover effect over Vision */}
-      <Card z={4} sticky={false} clip={false}>
+      <Card z={3} sticky={false} clip={false}>
         <ImmersiveCarousel />
       </Card>
 
-      {/* 6. Remaining sections: solid tail blocks sticky hero bleed-through */}
+      <div
+        className="home-section"
+        style={{ position: "relative", zIndex: 4, backgroundColor: "var(--bg)" }}
+      >
+        <AboutTeaser />
+      </div>
+
+      <div className="home-section" style={{ position: "relative", zIndex: 5, backgroundColor: "var(--bg)" }}>
+        <Vision />
+      </div>
+
       <div
         className="section-flow"
         style={{
           position: "relative",
-          zIndex: 5,
+          zIndex: 6,
           isolation: "isolate",
           backgroundColor: "var(--bg)",
         }}
       >
-        <Card z={5} sticky={false} clip={false}>
-          <Philosophy />
-        </Card>
         <Card z={6} sticky={false} clip={false}>
           <Contact />
         </Card>

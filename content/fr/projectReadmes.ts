@@ -21,24 +21,75 @@ export type ProjectReadmeData = {
 };
 
 export const projectReadmes: Record<string, ProjectReadmeData> = {
+  standout: {
+    badges: [
+      { label: "Type", value: "Travail client" },
+      { label: "Lieu", value: "Ottawa" },
+      { label: "Langues", value: "EN / FR" },
+      { label: "Stade", value: "Studio actif" },
+    ],
+    why: {
+      title: "Pourquoi Standout Studio",
+      body: "Les freelances et les entreprises locales ont besoin d'une première impression claire en ligne, pas d'un dump de gabarits. Standout Studio est un studio web bilingue à Ottawa : vraies réunions, propositions cadrées, itérations design/dev, sites livrés et environ 3 000 $ de revenus précoces à ce jour.",
+    },
+    highlights: [
+      "Découverte client : entendre la demande, trouver le vrai job",
+      "Cadrage budget / échéancier avant le build",
+      "Sites marketing Next.js / TypeScript maintenables",
+      "Contenu bilingue EN/FR conçu dès le départ",
+      "Suivi après livraison, pas un handoff silencieux",
+      "Preuve réelle : clients payants et sites en ligne",
+    ],
+    techStack: [
+      "Next.js",
+      "TypeScript",
+      "React",
+      "CSS / design systems",
+      "Vercel",
+    ],
+    gettingStarted: {
+      prerequisites: [
+        "Node.js 20+",
+        "npm",
+        "Accès au dépôt du site client concerné",
+      ],
+      steps: [
+        "Cloner le dépôt Standout Studio ou le dépôt du site client.",
+        "Installer les dépendances avec npm install.",
+        "Lancer le serveur de développement local.",
+        "Itérer avec le client jusqu'à la mise en ligne.",
+      ],
+      buildCommand: "npm run dev",
+    },
+    projectStructure: `app/           # Routes et pages Next.js
+components/    # UI partagée
+content/       # Contenu bilingue
+public/        # Assets statiques`,
+    roadmap: [
+      "Continuer les livraisons clients avec un scope clair",
+      "Renforcer le modèle de contenu bilingue EN/FR",
+      "Garder le suivi post-lancement comme différenciateur",
+      "Scaler le studio sans redevenir une boutique à tickets",
+    ],
+  },
   studentos: {
     badges: [
       { label: "Plateforme", value: "React Native" },
       { label: "Expo", value: "SDK 54" },
-      { label: "Stade", value: "Beta fermée" },
+      { label: "Stade", value: "Exploration / pause" },
       { label: "Licence", value: "MIT" },
     ],
     why: {
       title: "Pourquoi StudentOS",
-      body: "Les étudiants n'échouent pas par manque d'outils. Ils échouent parce que la vie académique est fragmentée. StudentOS est un planner étudiant qui se comporte comme un OS académique : accueil, cours, calendrier, focus, Ask AI, sync cloud et OTP par courriel scolaire pour la beta fermée.",
+      body: "Les étudiants n'échouent pas par manque d'outils. Ils échouent parce que la vie académique est fragmentée. StudentOS a été exploré comme un OS académique : accueil, calendrier, focus et Ask AI. Assez loin pour révéler un problème de modèle — un coach IA utile a un coût marginal, et la distribution Apple n'est pas gratuite — puis mis en pause avant une beta payante.",
     },
     highlights: [
       "Objets académiques : cours, tâches, examens, vacances",
       "Centre de commande avec progression et prochaines actions",
       "Timer / chronomètre de focus avec musique dans la boucle produit",
-      "Coach Ask AI via proxy serveur",
-      "Beta fermée via courriel scolaire + OTP",
-      "Chemin natif : Expo Go → EAS → TestFlight / App Store",
+      "Coach Ask AI via proxy serveur (centre de coût)",
+      "Chemin d'adhésion OTP par courriel scolaire conçu",
+      "Pause volontaire avant frais Apple et burn API",
     ],
     techStack: [
       "React Native",
@@ -58,7 +109,7 @@ export const projectReadmes: Record<string, ProjectReadmeData> = {
         "Cloner le dépôt StudentOS.",
         "Lancer npm install (et npm --prefix server install si besoin de l'API locale).",
         "Démarrer avec npm run start:go et scanner le QR dans Expo Go.",
-        "Rejoindre la beta avec courriel scolaire + code de vérification.",
+        "Explorer le prototype localement ; pas de beta publique active.",
       ],
       buildCommand: "npm run start:go",
     },
@@ -66,25 +117,25 @@ export const projectReadmes: Record<string, ProjectReadmeData> = {
 components/    # UI partagée
 src/           # Logique domaine
 server/        # API Express + SQLite
-store/         # Docs beta + distribution native
+store/         # Docs distribution native
 screenshots/   # Captures produit`,
     roadmap: [
-      "Durcir la distribution native iOS (TestFlight / App Store)",
-      "Finaliser les OAuth calendrier et musique",
-      "Transformer le feedback beta en apprentissages produit priorisés",
-      "Scaler seulement après qu'un semestre complet tourne dans StudentOS",
+      "Reprendre seulement si le modèle de monétisation est clair",
+      "Éviter une beta portfolio qui brûle frais Apple + API IA",
+      "Garder StudentOS comme étude de cas produit et architecture",
+      "Documenter la leçon : pause avant burn ≠ échec",
     ],
   },
   signs: {
     badges: [
       { label: "Plateforme", value: "React Native" },
       { label: "Équipe", value: "2 builders" },
-      { label: "Focus", value: "Accessibilité" },
+      { label: "Stade", value: "Préparation beta Android" },
       { label: "Piliers", value: "Dictionnaire + leçons" },
     ],
     why: {
       title: "Pourquoi SIgns",
-      body: "La plupart des produits d'apprentissage de langues se concentrent sur l'oral. SIgns comble ce manque avec une expérience mobile autour d'un dictionnaire visuel et de leçons structurées, livré par une équipe de deux.",
+      body: "La plupart des produits d'apprentissage de langues se concentrent sur l'oral. SIgns comble ce manque avec une expérience mobile autour d'un dictionnaire visuel et de leçons structurées, co-construit avec Steven Readman. On prépare maintenant la beta Android, le recrutement de testeurs et l'itération par feedback réel.",
     },
     highlights: [
       "Dictionnaire visuel avec recherche, catégories et favoris",
@@ -92,6 +143,7 @@ screenshots/   # Captures produit`,
       "Exercices de reconnaissance, association et rappel",
       "Suivi de progression et séries de complétion",
       "Un seul codebase React Native pour iOS et Android",
+      "Co-construit avec Steven Readman (équipe de 2)",
     ],
     techStack: [
       "React Native",
@@ -118,10 +170,10 @@ screenshots/   # Captures produit`,
   assets/onboarding/
   # Écrans React Native, navigation et état`,
     roadmap: [
-      "Élargir la couverture des leçons conversationnelles",
+      "Soumettre et ouvrir la beta Android",
+      "Recruter des apprenants et capturer le feedback réel",
       "Renforcer les boucles de progression et de révision",
-      "Améliorer la découverte dans le dictionnaire",
-      "Garder l'accessibilité au centre en grandissant",
+      "Élargir la couverture des leçons conversationnelles",
     ],
   },
 };

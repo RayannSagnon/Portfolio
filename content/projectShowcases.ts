@@ -27,7 +27,7 @@ export type ProjectShowcaseData = {
 
 export const projectShowcases: Record<string, ProjectShowcaseData> = {
   studentos: {
-    status: "Closed beta · Expo",
+    status: "Exploration · Paused before beta",
     showHeroBanner: true,
     hero: {
       src: "/images/projects/studentos/hero-presentation.png",
@@ -43,8 +43,8 @@ export const projectShowcases: Record<string, ProjectShowcaseData> = {
       {
         src: "/images/projects/studentos/screen-login.png",
         alt: "StudentOS school-email OTP sign-in screen",
-        label: "Join beta",
-        caption: "School email + one-time code: low-friction closed beta onboarding.",
+        label: "Auth path",
+        caption: "School-email OTP path designed for a future beta, not a live cohort today.",
         width: 640,
         height: 1380,
       },
@@ -75,7 +75,7 @@ export const projectShowcases: Record<string, ProjectShowcaseData> = {
     ],
   },
   signs: {
-    status: "Shipped · Team of 2",
+    status: "Preparing Android beta · Team of 2",
     showHeroBanner: true,
     hero: {
       src: "/images/projects/signs/hero-banner-en.png",
@@ -121,5 +121,20 @@ export const projectShowcases: Record<string, ProjectShowcaseData> = {
         height: 1024,
       },
     ],
+  },
+  standout: {
+    status: "Client work · Early revenue",
+    showHeroBanner: false,
+    hero: {
+      src: "/images/projects/signs/hero-banner-en.png",
+      alt: "Standout Studio",
+      width: 1600,
+      height: 600,
+    },
+    screenFrame: {
+      width: 1600,
+      height: 900,
+    },
+    screens: [],
   },
 };

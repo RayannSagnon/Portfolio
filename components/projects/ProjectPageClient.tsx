@@ -116,7 +116,7 @@ export function ProjectPageClient({ slug }: Props) {
           />
         ) : null}
 
-        {showcase ? (
+        {showcase && (showcase as ProjectShowcaseData).screens.length > 0 ? (
           <ProjectShowcase
             showcase={showcase as ProjectShowcaseData}
             hue={project.hue}

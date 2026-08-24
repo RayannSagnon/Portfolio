@@ -146,8 +146,11 @@ function rememberProjectReturnTarget() {
 }
 
 export function ImmersiveCarousel() {
-  const { projects } = useContent();
+  const { projects: allProjects } = useContent();
   const ui = useUI();
+  const projects = allProjects.filter((p) => p.showInCarousel !== false);
+
+  if (projects.length === 0) return null;
 
   if (projects.length === 1) {
     return <FeaturedProject project={projects[0]} />;

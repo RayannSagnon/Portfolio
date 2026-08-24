@@ -2,8 +2,7 @@
 
 <img width="2848" height="1442" alt="image" src="https://github.com/user-attachments/assets/2720b79e-79d2-4711-846c-798cf692d379" /></br>
 
-Personal portfolio of an Electrical Engineering student at uOttawa building toward product management, end-to-end products from problem to users to learning.
-
+Personal portfolio of an engineering student at uOttawa building toward product management: client work and products from problem to delivery.
 
 ## Live
 
@@ -11,23 +10,21 @@ Personal portfolio of an Electrical Engineering student at uOttawa building towa
 
 ## Overview
 
-I'm an Electrical Engineering student at the University of Ottawa, building toward product management. This portfolio presents case studies as a product manager would: problem, users, decisions, what shipped, and what I learned.
+I'm an engineering student at the University of Ottawa, building toward product management. This portfolio presents honest case studies: client delivery at Standout Studio, SIgns entering beta, and StudentOS as a product exploration paused before a paid beta.
 
-## Projects
+## Work
 
-| # | Project | Domain | Stack |
+| # | Project | Status | Proof |
 |---|---------|--------|-------|
-| 01 | **StudentOS** | Academic OS · Closed beta | React Native, Expo SDK 54 |
-| 02 | **SIgns** | Accessibility · Sign language | React Native, Node.js, PostgreSQL |
-
-**AI Footprint** joins as a third featured case study once the repo is public.
+| 00 | **Standout Studio** | Client work · Co-founder | Paying clients, ~$3K early revenue, bilingual Ottawa studio |
+| 01 | **SIgns** | Preparing Android beta | Co-built with Steven Readman; dictionary + lessons |
+| 02 | **StudentOS** | Paused before beta | Academic OS prototype; paused on AI cost / distribution economics |
 
 ## Tech Stack
 
 - **Framework** - Next.js 16, React 19, TypeScript
 - **Styling** - Tailwind CSS v4
 - **Animation** - Framer Motion, GSAP
-- **3D** - Three.js, React Three Fiber
 - **Deployment** - Vercel
 
 ## Local Development
