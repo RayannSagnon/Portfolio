@@ -51,3 +51,6 @@ next-env.d.ts
 
 # local responsive QA captures
 /responsive-audit/
+
+.tmp*
+scripts/__pycache__/
